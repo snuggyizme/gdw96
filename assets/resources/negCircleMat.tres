@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bhwr2rkg8pc7"]
+
+[ext_resource type="Shader" uid="uid://m7q760iyutsd" path="res://shaders/circleEmitter.gdshader" id="1_dr60n"]
+
+[resource]
+shader = ExtResource("1_dr60n")
+shader_parameter/frequency = 4.89
+shader_parameter/speed = -0.695
+shader_parameter/thickness = 0.455
+shader_parameter/softness = 0.2
+shader_parameter/maxRadius = 0.79
+shader_parameter/ringColour = Color(0.261, 0.3781499, 0.9, 1)

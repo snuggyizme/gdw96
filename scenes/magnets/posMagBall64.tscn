@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://sblrwwfr5lm7" path="res://assets/resources/positiveMat.tres" id="1_dnhhs"]
 [ext_resource type="Texture2D" uid="uid://jo4otevq7rbh" path="res://assets/sprites/env/magnets/magnetCircle64.png" id="2_flpq8"]
 [ext_resource type="Script" uid="uid://cu5h2cdwpsbpx" path="res://scripts/magneticBody.gd" id="3_flpq8"]
+[ext_resource type="Material" uid="uid://ce5dgpxhdw8ux" path="res://assets/resources/posCircleMat.tres" id="4_oyt1f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 32.0
@@ -22,3 +23,12 @@ debug_color = Color(0, 0.5950001, 0.7, 0)
 script = ExtResource("3_flpq8")
 effectiveRange = 100.0
 metadata/_custom_type_script = "uid://cu5h2cdwpsbpx"
+
+[node name="EffectBehind" type="ColorRect" parent="." unique_id=272566467]
+z_index = 20
+z_as_relative = false
+material = ExtResource("4_oyt1f")
+offset_left = -82.0
+offset_top = -82.0
+offset_right = 82.0
+offset_bottom = 82.0

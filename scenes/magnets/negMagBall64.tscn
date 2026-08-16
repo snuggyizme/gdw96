@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://3v0kif0lxfus" path="res://assets/resources/negativeMat.tres" id="1_k2a7n"]
 [ext_resource type="Texture2D" uid="uid://jo4otevq7rbh" path="res://assets/sprites/env/magnets/magnetCircle64.png" id="2_yw3sc"]
 [ext_resource type="Script" uid="uid://cu5h2cdwpsbpx" path="res://scripts/magneticBody.gd" id="3_yw3sc"]
+[ext_resource type="Material" uid="uid://bhwr2rkg8pc7" path="res://assets/resources/negCircleMat.tres" id="4_f0v52"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yw3sc"]
 radius = 32.0
@@ -24,3 +25,12 @@ polarity = 1
 strength = 2000.0
 effectiveRange = 160.0
 metadata/_custom_type_script = "uid://cu5h2cdwpsbpx"
+
+[node name="EffectBehind" type="ColorRect" parent="." unique_id=608102214]
+z_index = 20
+z_as_relative = false
+material = ExtResource("4_f0v52")
+offset_left = -82.0
+offset_top = -82.0
+offset_right = 82.0
+offset_bottom = 82.0

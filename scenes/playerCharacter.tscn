@@ -54,6 +54,7 @@ corner_radius_top_right = 8
 corner_detail = 1
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=797122572]
+z_index = 30
 script = ExtResource("1_qn7b7")
 topSpeed = 600.0
 walkSpeed = 390.0
