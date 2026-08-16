@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://dnnnwdx0mlgcd"]
+
+[ext_resource type="Script" uid="uid://btlv5g3f7obua" path="res://scripts/playerCharacter.gd" id="1_qn7b7"]
+[ext_resource type="Texture2D" uid="uid://bh7ah1a015kgh" path="res://assets/sprites/player/arrow.png" id="2_gujqm"]
+[ext_resource type="Texture2D" uid="uid://c57w3jtblqo5v" path="res://assets/sprites/player/magnet.png" id="3_d3uoy"]
+[ext_resource type="Material" uid="uid://3v0kif0lxfus" path="res://assets/resources/negativeMat.tres" id="3_gujqm"]
+[ext_resource type="Shader" uid="uid://cec7age3ibkum" path="res://shaders/noiseReplacer.gdshader" id="5_5vujh"]
+[ext_resource type="Texture2D" uid="uid://ketgvcag07au" path="res://assets/sprites/player/warning50.png" id="6_nspu6"]
+[ext_resource type="Texture2D" uid="uid://c7qukk4fv4x40" path="res://assets/sprites/player/warning20.png" id="7_5auh5"]
+
+[sub_resource type="Gradient" id="Gradient_qn7b7"]
+offsets = PackedFloat32Array(0.08045977, 0.23563218, 0.5, 0.59770113, 0.9885057)
+colors = PackedColorArray(0, 0, 0.3254902, 1, 0, 0, 0.24705882, 1, 0, 0, 0, 1, 0.043137256, 0, 0, 1, 0.6522269, 2.7675183e-06, 4.3317675e-07, 1)
+
+[sub_resource type="Gradient" id="Gradient_5vujh"]
+
+[sub_resource type="Gradient" id="Gradient_r7e07"]
+colors = PackedColorArray(0.4145443, 0.68477345, 0.82810396, 1, 0.6307496, 0.5432137, 0.99155873, 0.28627452)
+
+[sub_resource type="Gradient" id="Gradient_7pjku"]
+colors = PackedColorArray(0.83, 0.415, 0.415, 1, 0.76, 0.38, 0.6523333, 0.2627451)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gujqm"]
+radius = 7.0
+
+[sub_resource type="Gradient" id="Gradient_5auh5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.26119402, 0.42537314, 0.7089552)
+colors = PackedColorArray(0.2635, 0.52742517, 0.85, 1, 0.323, 0.68311673, 0.85, 1, 0.323, 0.85, 0.77094996, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nspu6"]
+frequency = 0.0081
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5vujh"]
+noise = SubResource("FastNoiseLite_nspu6")
+color_ramp = SubResource("Gradient_5auh5")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nspu6"]
+shader = ExtResource("5_5vujh")
+shader_parameter/colourToReplace = Color(0.6, 0.6, 0.6, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_5vujh")
+shader_parameter/speed = 0.035
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gujqm"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vujh"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_detail = 1
+
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=797122572]
+script = ExtResource("1_qn7b7")
+topSpeed = 600.0
+walkSpeed = 390.0
+jumpSpeed = 320.0
+gravity = 840.0
+fallSpeedHoldThing = SubResource("Gradient_qn7b7")
+maxTimeWalking = 1.6
+overSpeedSlowdownSpeed = 1.0
+walkBackSpeed = 900.0
+decelSpeed = 400.0
+magnetFalloffGradient = SubResource("Gradient_5vujh")
+posGrad = SubResource("Gradient_r7e07")
+negGrad = SubResource("Gradient_7pjku")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2058709976]
+texture = ExtResource("2_gujqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2013117170]
+shape = SubResource("CircleShape2D_gujqm")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=370734571]
+position_smoothing_enabled = true
+
+[node name="Fisherman" type="Node2D" parent="." unique_id=827254021]
+visible = false
+
+[node name="MagnetSprite" type="Sprite2D" parent="Fisherman" unique_id=1074370859]
+material = ExtResource("3_gujqm")
+position = Vector2(25, 0)
+texture = ExtResource("3_d3uoy")
+metadata/_edit_lock_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1992446041]
+material = SubResource("ShaderMaterial_nspu6")
+offset_left = -26.0
+offset_top = -23.0
+offset_right = 26.0
+offset_bottom = -12.0
+theme_override_styles/background = SubResource("StyleBoxFlat_gujqm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5vujh")
+step = 1.0
+value = 84.0
+show_percentage = false
+
+[node name="ZappyLines" type="Node2D" parent="." unique_id=1893423507]
+
+[node name="Warnings" type="Node2D" parent="." unique_id=285909872]
+position = Vector2(-32, -18)
+
+[node name="Warning50" type="Sprite2D" parent="Warnings" unique_id=1354344222]
+texture = ExtResource("6_nspu6")
+
+[node name="Warning20" type="Sprite2D" parent="Warnings" unique_id=1009182636]
+z_index = 2
+texture = ExtResource("7_5auh5")

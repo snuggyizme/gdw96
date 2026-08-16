@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://sblrwwfr5lm7"]
+
+[ext_resource type="Shader" uid="uid://wf8vqn1xlasf" path="res://shaders/recolourBNW.gdshader" id="1_uwj76"]
+
+[sub_resource type="Gradient" id="Gradient_ogq5e"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.24705882, 0.28627452, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_57qmd"]
+gradient = SubResource("Gradient_ogq5e")
+
+[resource]
+shader = ExtResource("1_uwj76")
+shader_parameter/gradient = SubResource("GradientTexture1D_57qmd")
