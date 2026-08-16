@@ -22,6 +22,10 @@ const NEG_MAT := preload("res://assets/resources/negativeMat.tres")
 
 var lastForces := Vector2.ZERO
 var closestMagnet: MagneticBody
+var charge: float:
+	set(x):
+		charge = x
+		$ProgressBar.value = x
 
 @onready var levelContainer: LevelContainer = get_node("/root/Game/LevelContainer")
 
@@ -145,3 +149,7 @@ func jiggleWarnings() -> void:
 	tween.tween_property($Warnings, "rotation_degrees", -power - 3, 0.0625)
 	tween.tween_property($Warnings, "rotation_degrees", power, 0.0625)
 	tween.tween_property($Warnings, "rotation_degrees", 0, 0.0625)
+
+func restart() -> void:
+	charge = 100.0
+	
