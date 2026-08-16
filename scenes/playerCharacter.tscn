@@ -98,8 +98,6 @@ step = 1.0
 value = 84.0
 show_percentage = false
 
-[node name="ZappyLines" type="Node2D" parent="." unique_id=1893423507]
-
 [node name="Warnings" type="Node2D" parent="." unique_id=285909872]
 position = Vector2(-32, -18)
 

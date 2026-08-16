@@ -97,12 +97,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("shift"):
 		velocity += forces
-	else:
-		for innocentChild in $ZappyLines.get_children():
-			innocentChild.queue_free()
-		
-		if not Input.is_action_just_pressed("shift") and $ZappyLines.get_child_count() < 1:
-			makeLine(randf_range(0.3, 1.1))
 	
 	# ~move and slide~
 	move_and_slide()
@@ -115,38 +109,6 @@ func _physics_process(delta: float) -> void:
 	# Why did I do this, it doesn't make sense.
 	#if closestMagnet:
 	#	$Sprite2D.material = POS_MAT if closestMagnet.polarity == MagneticBody.Polarity.NEGATIVE else NEG_MAT
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("shift"):
-		makeLines()
-
-func makeLines() -> void:
-	for i in range(randi_range(3, 6)):
-		makeLine(randf_range(0.3, 1.1))
-
-func makeLine(life: float) -> void:
-	if closestMagnet == null:
-		return
-	
-	var dir := (closestMagnet.global_position - global_position).angle()
-	dir += deg_to_rad(randf_range(-180, 180))
-	
-	var dirVec := Vector2.RIGHT.rotated(dir)
-	
-	var point = closestMagnet.global_position + dirVec * (closestMagnet.size / 2.0)
-	
-	var line := ZappyLine.new()
-	line.top_level = true
-	if closestMagnet.polarity == MagneticBody.Polarity.NEGATIVE:
-		line.gradient = posGrad
-	else:
-		line.gradient = negGrad
-	line.points = PackedVector2Array([global_position, point])
-	line.width = 2.5
-	line.antialiased = true
-	$ZappyLines.add_child(line)
-	
-	line.start(self, closestMagnet.global_position, life)
 
 func bounceWarnings() -> void:
 	var tween := create_tween()
