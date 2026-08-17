@@ -19,18 +19,22 @@ const NEG_MAT := preload("res://assets/resources/negativeMat.tres")
 @export_range(0.0, 1.0, 0.05) var steerMagnetStrength: float
 @export var posGrad: Gradient
 @export var negGrad: Gradient
+@export var spaceMult: float
 
 var lastForces := Vector2.ZERO
 var closestMagnet: MagneticBody
 var charge: float:
 	set(x):
+		if is_inside_tree():
+			$ProgressBar.value = x
 		charge = x
-		$ProgressBar.value = x
+var cooldown: float = 0.0
 
 @onready var levelContainer: LevelContainer = get_node("/root/Game/LevelContainer")
 
 func _ready() -> void:
 	bounceWarnings()
+	restart()
 
 func _physics_process(delta: float) -> void:
 	# Own magnet
@@ -99,15 +103,29 @@ func _physics_process(delta: float) -> void:
 			closestDistance = distance
 			closestMagnet = m
 	
-	if Input.is_action_pressed("shift"):
+	cooldown += delta
+	
+	var shiftPressed := Input.is_action_pressed("shift")
+	var spacePressed := Input.is_action_just_pressed("space")
+	
+	if spacePressed and cooldown > 0.2:
+		if charge >= 9.5:
+			velocity += forces * spaceMult
+			charge -= 9.5 
+			cooldown = 0.0
+	elif shiftPressed and charge >= 2.5 * delta:
 		velocity += forces
+		charge -= 2.5 * delta
 	
 	# ~move and slide~
 	move_and_slide()
 	
-	if forces != Vector2.ZERO: lastForces = forces
+	if forces != Vector2.ZERO:
+		lastForces = forces
+		$Sprite2D.rotation = lastForces.normalized().angle()
+	else:
+		$Sprite2D.rotate(deg_to_rad(5))
 	
-	$Sprite2D.rotation = lastForces.normalized().angle()
 	$Sprite2D.flip_v = cos($Sprite2D.rotation) < 0
 	
 	# Why did I do this, it doesn't make sense.

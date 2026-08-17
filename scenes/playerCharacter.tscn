@@ -68,6 +68,7 @@ decelSpeed = 400.0
 magnetFalloffGradient = SubResource("Gradient_5vujh")
 posGrad = SubResource("Gradient_r7e07")
 negGrad = SubResource("Gradient_7pjku")
+spaceMult = 12.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2058709976]
 texture = ExtResource("2_gujqm")
