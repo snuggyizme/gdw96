@@ -34,12 +34,11 @@ var cooldown: float = 0.0
 
 func _ready() -> void:
 	bounceWarnings()
-	restart()
 
 func _physics_process(delta: float) -> void:
-	# Own magnet
-	var target: float = (global_position - get_global_mouse_position()).normalized().angle()
-	$Fisherman.rotation = target + deg_to_rad(180)
+	# Warnings
+	$Warnings/Warning20.visible = ( charge < 25 )
+	$Warnings/Warning50.visible = ( charge > 25 and charge < 50 )
 	
 	# Movement
 	var dir = Input.get_vector(

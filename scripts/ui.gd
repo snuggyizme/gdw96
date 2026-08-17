@@ -3,7 +3,8 @@ class_name UI extends CanvasLayer
 var time: float = 0.0
 
 func _process(delta: float) -> void:
-	time += delta
+	if not Global.pause:
+		time += delta
 	
 	@warning_ignore("integer_division")
 	var mins: int = int(time) / 60

@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://btlv5g3f7obua" path="res://scripts/playerCharacter.gd" id="1_qn7b7"]
 [ext_resource type="Texture2D" uid="uid://bh7ah1a015kgh" path="res://assets/sprites/player/arrow.png" id="2_gujqm"]
-[ext_resource type="Texture2D" uid="uid://c57w3jtblqo5v" path="res://assets/sprites/player/magnet.png" id="3_d3uoy"]
-[ext_resource type="Material" uid="uid://3v0kif0lxfus" path="res://assets/resources/negativeMat.tres" id="3_gujqm"]
 [ext_resource type="Shader" uid="uid://cec7age3ibkum" path="res://shaders/noiseReplacer.gdshader" id="5_5vujh"]
 [ext_resource type="Texture2D" uid="uid://ketgvcag07au" path="res://assets/sprites/player/warning50.png" id="6_nspu6"]
 [ext_resource type="Texture2D" uid="uid://c7qukk4fv4x40" path="res://assets/sprites/player/warning20.png" id="7_5auh5"]
@@ -53,7 +51,7 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_detail = 1
 
-[node name="PlayerCharacter" type="CharacterBody2D" unique_id=797122572]
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=797122572 groups=["Player"]]
 z_index = 30
 script = ExtResource("1_qn7b7")
 topSpeed = 600.0
@@ -78,15 +76,6 @@ shape = SubResource("CircleShape2D_gujqm")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=370734571]
 position_smoothing_enabled = true
-
-[node name="Fisherman" type="Node2D" parent="." unique_id=827254021]
-visible = false
-
-[node name="MagnetSprite" type="Sprite2D" parent="Fisherman" unique_id=1074370859]
-material = ExtResource("3_gujqm")
-position = Vector2(25, 0)
-texture = ExtResource("3_d3uoy")
-metadata/_edit_lock_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1992446041]
 material = SubResource("ShaderMaterial_nspu6")
