@@ -19,6 +19,6 @@ func loadMap(mapScene: PackedScene) -> void:
 	currentMap = map
 
 func resetPlayer() -> void:
-	$"../PlayerCharacter".global_position = currentMap.get_node("playerSpawn").global_position
+	$"../PlayerCharacter".global_position = currentMap.get_node("PlayerSpawn").global_position
 	$"../PlayerCharacter".restart()
 	$"../UI".restart()
