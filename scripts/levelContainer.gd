@@ -2,11 +2,14 @@ class_name LevelContainer extends Node2D
 
 @export var currentMap: Node2D
 
+var mapWorkTest = load("res://scenes/_test/mapWorkTest.tscn")
+
 func _ready() -> void:
+	loadMap(mapWorkTest)
 	resetPlayer()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("restart") and Global.pause == false:
+	if event.is_action_pressed("restart"):
 		resetPlayer()
 
 func getMagnets() -> Array:
@@ -24,21 +27,24 @@ func loadMap(mapScene: PackedScene) -> void:
 	var map = mapScene.instantiate()
 	add_child(map)
 	
-	currentMap.queue_free()
-	currentMap.get_node("Finish").body_entered.disconnect(finishLevel)
+	if currentMap != null:
+		currentMap.queue_free()
+		currentMap.get_node("FinishRect/Finish").body_entered.disconnect(finishLevel)
 	
 	currentMap = map
 	
-	currentMap.get_node("Finish").body_entered.connect(finishLevel)
+	currentMap.get_node("FinishRect/Finish").body_entered.connect(finishLevel)
 
 func resetPlayer() -> void:
 	$"../PlayerCharacter".global_position = currentMap.get_node("PlayerSpawn").global_position
 	$"../PlayerCharacter".restart()
 	$"../UI".restart()
+	currentMap.get_node("FinishRect").restart()
+	Global.pause = false
 
 func finishLevel(body: Node) -> void:
 	if not body.is_in_group("Player"):
 		return
 	
 	Global.pause = true
-	print("finished!", $"../UI".time)
+	printt("finished!", $"../UI".time)

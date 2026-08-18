@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://doby2p1ybbs8f"]
+
+[ext_resource type="Shader" uid="uid://bgtl1ed55o7i0" path="res://assets/resources/twoNoiseFinishThing.gdshader" id="1_hxr04"]
+[ext_resource type="PackedScene" uid="uid://cx5s2hvk1xyxb" path="res://scenes/finish.tscn" id="1_kdp5m"]
+[ext_resource type="Gradient" uid="uid://cgqgve7fp4qeh" path="res://assets/resources/unfinishedGradient.tres" id="2_uqsap"]
+[ext_resource type="Gradient" uid="uid://cjpfvyfrsu0ij" path="res://assets/resources/finishedGradient.tres" id="3_hxr04"]
+[ext_resource type="Shader" uid="uid://bilgd3kigj5jd" path="res://shaders/checkers.gdshader" id="3_mkkdk"]
+[ext_resource type="Script" uid="uid://dmvpud0qbnu1x" path="res://scripts/finishRecolourer.gd" id="5_jxj3e"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jxj3e"]
+gradient = ExtResource("2_uqsap")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e6xsq"]
+gradient = ExtResource("3_hxr04")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2pftv"]
+noise_type = 0
+seed = 88
+frequency = 0.0038
+fractal_octaves = 10
+fractal_lacunarity = 1.285
+fractal_gain = 0.99
+fractal_weighted_strength = 0.36
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_amplitude = 24.43
+domain_warp_frequency = -0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_07gpw"]
+width = 768
+noise = SubResource("FastNoiseLite_2pftv")
+seamless = true
+in_3d_space = true
+seamless_blend_skirt = 0.272
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n4l5h"]
+shader = ExtResource("1_hxr04")
+shader_parameter/noise = SubResource("NoiseTexture2D_07gpw")
+shader_parameter/a = SubResource("GradientTexture1D_jxj3e")
+shader_parameter/b = SubResource("GradientTexture1D_e6xsq")
+shader_parameter/aOrB = false
+shader_parameter/speed = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndsbd"]
+shader = ExtResource("3_mkkdk")
+shader_parameter/scale = Vector2(23, 23)
+shader_parameter/colourA = Color(0, 0, 0, 1)
+shader_parameter/colourB = Color(1, 1, 1, 1)
+shader_parameter/replaceColour = Color(1, 1, 1, 1)
+
+[node name="FinishRect" type="ColorRect" unique_id=1703095847]
+material = SubResource("ShaderMaterial_n4l5h")
+offset_right = 213.0
+offset_bottom = 222.0
+color = Color(1, 0, 1, 1)
+script = ExtResource("5_jxj3e")
+
+[node name="Finish" parent="." unique_id=1977250624 instance=ExtResource("1_kdp5m")]
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2019300127]
+z_index = -1
+material = SubResource("ShaderMaterial_ndsbd")
+layout_mode = 0
+offset_right = 213.0
+offset_bottom = 222.0
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="Finish" to="." method="_onBodyEnteredFinish"]

@@ -36,6 +36,9 @@ func _ready() -> void:
 	bounceWarnings()
 
 func _physics_process(delta: float) -> void:
+	if Global.pause:
+		return
+	
 	# Warnings
 	$Warnings/Warning20.visible = ( charge < 25 )
 	$Warnings/Warning50.visible = ( charge > 25 and charge < 50 )
@@ -169,4 +172,5 @@ func jiggleWarnings() -> void:
 
 func restart() -> void:
 	charge = 100.0
+	velocity = Vector2.ZERO
 	

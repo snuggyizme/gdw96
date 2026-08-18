@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cx5s2hvk1xyxb"]
+
+[ext_resource type="Script" uid="uid://lwdlhpvlcs86" path="res://scripts/finishRectangleThing.gd" id="1_5nbog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nbog"]
+size = Vector2(123.5, 113.5)
+
+[node name="Finish" type="Area2D" unique_id=1977250624]
+priority = 159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2054840303]
+z_index = 4
+position = Vector2(61.75, 56.75)
+shape = SubResource("RectangleShape2D_5nbog")
+debug_color = Color(0, 0.6431373, 0.31764707, 0.7647059)
+script = ExtResource("1_5nbog")
+metadata/_edit_lock_ = true
