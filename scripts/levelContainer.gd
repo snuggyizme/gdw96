@@ -6,7 +6,7 @@ var testMap = load("res://scenes/_test/testMap.tscn")
 var mapWorkTest = load("res://scenes/_test/mapWorkTest.tscn")
 
 func _ready() -> void:
-	loadMap(testMap)
+	loadMap(mapWorkTest)
 	resetPlayer()
 
 func _input(event: InputEvent) -> void:

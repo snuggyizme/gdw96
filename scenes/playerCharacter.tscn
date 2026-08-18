@@ -78,6 +78,7 @@ shape = SubResource("CircleShape2D_gujqm")
 position_smoothing_enabled = true
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=1992446041]
+z_index = 100
 material = SubResource("ShaderMaterial_nspu6")
 offset_left = -26.0
 offset_top = -23.0
@@ -90,6 +91,7 @@ value = 84.0
 show_percentage = false
 
 [node name="Warnings" type="Node2D" parent="." unique_id=285909872]
+z_index = 99
 position = Vector2(-32, -18)
 
 [node name="Warning50" type="Sprite2D" parent="Warnings" unique_id=1354344222]
