@@ -31,5 +31,5 @@ position = Vector2(346, -9)
 [node name="FinishRect" parent="." unique_id=1703095847 instance=ExtResource("3_n4l5h")]
 offset_left = 580.0
 offset_top = -76.0
-offset_right = 780.7629
-offset_bottom = 138.0
+offset_right = 761.0
+offset_bottom = 113.0

@@ -11,10 +11,9 @@ spacing_glyph = 2
 
 [node name="Game" type="Node2D" unique_id=369631321]
 
-[node name="LevelContainer" type="Node2D" parent="." unique_id=1305887076 node_paths=PackedStringArray("currentMap")]
+[node name="LevelContainer" type="Node2D" parent="." unique_id=1305887076]
 unique_name_in_owner = true
 script = ExtResource("1_uwrxv")
-currentMap = NodePath("")
 
 [node name="PlayerCharacter" parent="." unique_id=797122572 instance=ExtResource("2_yqjtg")]
 position = Vector2(202, 55)

@@ -1,11 +1,12 @@
 class_name LevelContainer extends Node2D
 
-@export var currentMap: Node2D
+var currentMap: Node2D
 
+var testMap = load("res://scenes/_test/testMap.tscn")
 var mapWorkTest = load("res://scenes/_test/mapWorkTest.tscn")
 
 func _ready() -> void:
-	loadMap(mapWorkTest)
+	loadMap(testMap)
 	resetPlayer()
 
 func _input(event: InputEvent) -> void:

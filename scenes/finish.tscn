@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://lwdlhpvlcs86" path="res://scripts/finishRectangleThing.gd" id="1_5nbog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nbog"]
-size = Vector2(123.5, 113.5)
+size = Vector2(213, 222)
 
 [node name="Finish" type="Area2D" unique_id=1977250624]
 priority = 159
@@ -12,6 +12,7 @@ priority = 159
 z_index = 4
 position = Vector2(61.75, 56.75)
 shape = SubResource("RectangleShape2D_5nbog")
-debug_color = Color(0, 0.6431373, 0.31764707, 0.7647059)
+debug_color = Color(0.5585904, 0.41223744, 0.968347, 0.7647059)
 script = ExtResource("1_5nbog")
+bypass = true
 metadata/_edit_lock_ = true

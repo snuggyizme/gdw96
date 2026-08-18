@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dhtpatldo8n0y" path="res://assets/sprites/_test/hi.png" id="1_x8wiy"]
 [ext_resource type="TileSet" uid="uid://hudfkn0lk5sr" path="res://assets/resources/tileset.tres" id="2_safa7"]
 [ext_resource type="PackedScene" uid="uid://ccq7sp2ha211i" path="res://scenes/magnets/negMagBall64.tscn" id="4_safa7"]
+[ext_resource type="PackedScene" uid="uid://doby2p1ybbs8f" path="res://scenes/finishRect.tscn" id="5_cu5cp"]
 [ext_resource type="PackedScene" uid="uid://byh8yxmi7help" path="res://scenes/magnets/posMagBall64.tscn" id="5_hcpyl"]
 
 [node name="TestMap" type="Node2D" unique_id=1243831085]
@@ -40,3 +41,12 @@ position = Vector2(496, 80)
 
 [node name="NegMagBall66" parent="Magnets" unique_id=1039585068 instance=ExtResource("4_safa7")]
 position = Vector2(591, 80)
+
+[node name="FinishRect" parent="." unique_id=1703095847 instance=ExtResource("5_cu5cp")]
+offset_left = 676.0
+offset_top = -95.0
+offset_right = 889.0
+offset_bottom = 127.0
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1012524486]
+position = Vector2(-45, 182)
