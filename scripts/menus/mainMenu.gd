@@ -8,7 +8,7 @@ func _ready() -> void:
 	exitButton.pressed.connect(_onExitPressed)
 
 func _onPlayPressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://scenes/menus/levelMenu.tscn")
 
 func _onExitPressed() -> void:
 	get_tree().quit()

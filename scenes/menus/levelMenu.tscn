@@ -1,0 +1,215 @@
+[gd_scene format=3 uid="uid://q2f0de3f2qmo"]
+
+[ext_resource type="Material" uid="uid://i6n7a2tc6vwa" path="res://assets/resources/redNoiseMat.tres" id="1_rc54n"]
+[ext_resource type="Shader" uid="uid://cec7age3ibkum" path="res://shaders/noiseReplacer.gdshader" id="2_4ey87"]
+[ext_resource type="Script" uid="uid://cisnjtwnejo08" path="res://scripts/menus/levelMenu.gd" id="2_nr3oy"]
+[ext_resource type="PackedScene" uid="uid://ga5hnfcn5nu7" path="res://scenes/lvls/01.tscn" id="3_2h42e"]
+[ext_resource type="FontFile" uid="uid://bg2i732n8qch5" path="res://assets/fonts/GajrajOne-Regular.ttf" id="3_nr3oy"]
+[ext_resource type="Script" uid="uid://bufoahx4d5uq0" path="res://scripts/menus/mainMenuTitle.gd" id="4_2h42e"]
+[ext_resource type="PackedScene" uid="uid://c0h58um40snpk" path="res://scenes/_test/mapWorkTest.tscn" id="4_ww2at"]
+[ext_resource type="PackedScene" uid="uid://bqk65ixoo1e2w" path="res://scenes/_test/testMap.tscn" id="5_ww2at"]
+
+[sub_resource type="Gradient" id="Gradient_ww2at"]
+offsets = PackedFloat32Array(0.06716418, 0.26119402, 0.64179105)
+colors = PackedColorArray(0.05, 0.05, 0.05, 1, 0.17, 0.17, 0.17, 1, 0.5, 0.5, 0.5, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ddyp7"]
+frequency = 0.0087
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_frequency = 0.905
+domain_warp_fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l2vun"]
+noise = SubResource("FastNoiseLite_ddyp7")
+color_ramp = SubResource("Gradient_ww2at")
+seamless = true
+seamless_blend_skirt = 0.249
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0e4i8"]
+shader = ExtResource("2_4ey87")
+shader_parameter/colourToReplace = Color(1, 1, 1, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_l2vun")
+shader_parameter/speed = -0.005
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoifa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46d67"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahmkm"]
+
+[node name="LevelMenu" type="Control" unique_id=1567568859 node_paths=PackedStringArray("levelButtons", "returnButton")]
+material = ExtResource("1_rc54n")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_nr3oy")
+levels = Array[PackedScene]([ExtResource("3_2h42e"), ExtResource("4_ww2at"), ExtResource("4_ww2at"), ExtResource("4_ww2at"), ExtResource("5_ww2at")])
+levelButtons = [NodePath("Marker2D/01"), NodePath("Marker2D/02"), NodePath("Marker2D/03"), NodePath("Marker2D/04"), NodePath("Marker2D/05")]
+returnButton = NodePath("Return")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=760817660]
+material = SubResource("ShaderMaterial_0e4i8")
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 268.0
+mouse_filter = 2
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1671482702]
+material = ExtResource("1_rc54n")
+position = Vector2(240, 99)
+
+[node name="01" type="Button" parent="Marker2D" unique_id=282063839 node_paths=PackedStringArray("area")]
+z_index = 20
+use_parent_material = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -18.5
+offset_right = -132.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_nr3oy")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_eoifa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46d67")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ahmkm")
+text = "01"
+script = ExtResource("4_2h42e")
+area = NodePath(".")
+
+[node name="02" type="Button" parent="Marker2D" unique_id=1661360393 node_paths=PackedStringArray("area")]
+use_parent_material = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -18.5
+offset_right = -52.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_nr3oy")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_eoifa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46d67")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ahmkm")
+text = "02"
+script = ExtResource("4_2h42e")
+area = NodePath(".")
+
+[node name="03" type="Button" parent="Marker2D" unique_id=2146125666 node_paths=PackedStringArray("area")]
+use_parent_material = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -18.5
+offset_right = 28.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_nr3oy")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_eoifa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46d67")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ahmkm")
+text = "03"
+script = ExtResource("4_2h42e")
+area = NodePath(".")
+
+[node name="04" type="Button" parent="Marker2D" unique_id=524936427 node_paths=PackedStringArray("area")]
+use_parent_material = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 52.0
+offset_top = -18.5
+offset_right = 108.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_nr3oy")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_eoifa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46d67")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ahmkm")
+text = "04"
+script = ExtResource("4_2h42e")
+area = NodePath(".")
+
+[node name="05" type="Button" parent="Marker2D" unique_id=491110689 node_paths=PackedStringArray("area")]
+use_parent_material = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 132.0
+offset_top = -18.5
+offset_right = 188.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_nr3oy")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_eoifa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46d67")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ahmkm")
+text = "05"
+script = ExtResource("4_2h42e")
+area = NodePath(".")
+
+[node name="Return" type="Button" parent="." unique_id=510633038 node_paths=PackedStringArray("area")]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = 21.0
+offset_right = 143.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_nr3oy")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_eoifa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_46d67")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ahmkm")
+text = "Back to main menu"
+script = ExtResource("4_2h42e")
+area = NodePath(".")

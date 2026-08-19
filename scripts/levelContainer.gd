@@ -6,8 +6,13 @@ var testMap = load("res://scenes/_test/testMap.tscn")
 var mapWorkTest = load("res://scenes/_test/mapWorkTest.tscn")
 
 func _ready() -> void:
-	loadMap(mapWorkTest)
+	if Global.targetMapTransfer == null:
+		loadMap(mapWorkTest)
+	else:
+		loadMap(Global.targetMapTransfer)
 	resetPlayer()
+	
+	Global.targetMapTransfer = null
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart"):

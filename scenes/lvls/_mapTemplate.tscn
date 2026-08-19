@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bcjk1yv3iqcuo"]
+
+[ext_resource type="PackedScene" uid="uid://doby2p1ybbs8f" path="res://scenes/finishRect.tscn" id="1_adpie"]
+[ext_resource type="TileSet" uid="uid://hudfkn0lk5sr" path="res://assets/resources/tileset.tres" id="2_g0hoj"]
+
+[node name="MapTemplate" type="Node2D" unique_id=2084274339]
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=551059628]
+position = Vector2(85, 87)
+
+[node name="FinishRect" parent="." unique_id=1703095847 instance=ExtResource("1_adpie")]
+offset_left = 580.0
+offset_top = -76.0
+offset_right = 761.0
+offset_bottom = 113.0
+
+[node name="Magnets" type="Node2D" parent="." unique_id=893977720]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1967964828]
+z_index = 20
+tile_set = ExtResource("2_g0hoj")

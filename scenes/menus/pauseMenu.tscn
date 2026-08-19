@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://cn6vefmgwm0la"]
+
+[ext_resource type="Material" uid="uid://i6n7a2tc6vwa" path="res://assets/resources/redNoiseMat.tres" id="1_dqprv"]
+[ext_resource type="FontFile" uid="uid://bg2i732n8qch5" path="res://assets/fonts/GajrajOne-Regular.ttf" id="2_74yf2"]
+[ext_resource type="Script" uid="uid://dvjgl5bhvh8fs" path="res://scripts/menus/pauseMenu.gd" id="2_uocbe"]
+[ext_resource type="Script" uid="uid://bufoahx4d5uq0" path="res://scripts/menus/mainMenuTitle.gd" id="3_uocbe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bx38"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jw8jn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aauh"]
+
+[node name="PauseMenu" type="Control" unique_id=1650794542 node_paths=PackedStringArray("bttnReturn", "bttnOptions", "bttnQuitMenu", "bttnQuitGame")]
+material = ExtResource("1_dqprv")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_uocbe")
+bttnReturn = NodePath("Return")
+bttnOptions = NodePath("Options")
+bttnQuitMenu = NodePath("QuitMenu")
+bttnQuitGame = NodePath("QuitGame")
+
+[node name="Return" type="Button" parent="." unique_id=1092273711 node_paths=PackedStringArray("area")]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.380005
+offset_top = -66.5
+offset_right = 103.380005
+offset_bottom = -29.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_74yf2")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_3bx38")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jw8jn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4aauh")
+text = "Return"
+script = ExtResource("3_uocbe")
+area = NodePath(".")
+
+[node name="Options" type="Button" parent="." unique_id=345488714 node_paths=PackedStringArray("area")]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.380005
+offset_top = -18.5
+offset_right = 103.380005
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_74yf2")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_3bx38")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jw8jn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4aauh")
+text = "Options"
+script = ExtResource("3_uocbe")
+area = NodePath(".")
+
+[node name="QuitMenu" type="Button" parent="." unique_id=1367313264 node_paths=PackedStringArray("area")]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.380005
+offset_top = 29.5
+offset_right = 103.380005
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_74yf2")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_3bx38")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jw8jn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4aauh")
+text = "Quit to menu"
+script = ExtResource("3_uocbe")
+area = NodePath(".")
+
+[node name="QuitGame" type="Button" parent="." unique_id=1798684577 node_paths=PackedStringArray("area")]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.380005
+offset_top = 77.5
+offset_right = 103.380005
+offset_bottom = 114.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_74yf2")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_3bx38")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jw8jn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4aauh")
+text = "Quit game"
+script = ExtResource("3_uocbe")
+area = NodePath(".")

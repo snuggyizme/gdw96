@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dnnnwdx0mlgcd" path="res://scenes/playerCharacter.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://djo0xw5bmu6mb" path="res://scripts/ui.gd" id="4_iywne"]
 [ext_resource type="FontFile" uid="uid://bg2i732n8qch5" path="res://assets/fonts/GajrajOne-Regular.ttf" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cn6vefmgwm0la" path="res://scenes/menus/pauseMenu.tscn" id="5_iywne"]
 
 [sub_resource type="FontVariation" id="FontVariation_lnu2h"]
 base_font = ExtResource("4_lbhrr")
@@ -28,3 +29,5 @@ offset_bottom = 25.0
 theme_override_fonts/font = SubResource("FontVariation_lnu2h")
 text = "00:00:00"
 horizontal_alignment = 1
+
+[node name="PauseMenu" parent="UI" unique_id=1650794542 instance=ExtResource("5_iywne")]
