@@ -19,3 +19,7 @@ offset_bottom = 113.0
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1967964828]
 z_index = 20
 tile_set = ExtResource("2_g0hoj")
+
+[node name="Bg" type="TileMapLayer" parent="." unique_id=226595048]
+z_index = -5
+tile_set = ExtResource("2_g0hoj")

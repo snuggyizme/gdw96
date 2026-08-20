@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bg2i732n8qch5" path="res://assets/fonts/GajrajOne-Regular.ttf" id="3_nr3oy"]
 [ext_resource type="Script" uid="uid://bufoahx4d5uq0" path="res://scripts/menus/mainMenuTitle.gd" id="4_2h42e"]
 [ext_resource type="PackedScene" uid="uid://c0h58um40snpk" path="res://scenes/_test/mapWorkTest.tscn" id="4_ww2at"]
+[ext_resource type="PackedScene" uid="uid://dtpwqmkkqapfg" path="res://scenes/lvls/03.tscn" id="5_ddyp7"]
 [ext_resource type="PackedScene" uid="uid://bqk65ixoo1e2w" path="res://scenes/_test/testMap.tscn" id="5_ww2at"]
 
 [sub_resource type="Gradient" id="Gradient_ww2at"]
@@ -31,6 +32,7 @@ shader = ExtResource("2_4ey87")
 shader_parameter/colourToReplace = Color(1, 1, 1, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_l2vun")
 shader_parameter/speed = -0.005
+shader_parameter/localUV = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eoifa"]
 
@@ -47,7 +49,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_nr3oy")
-levels = Array[PackedScene]([ExtResource("3_2h42e"), ExtResource("4_ww2at"), ExtResource("4_ww2at"), ExtResource("4_ww2at"), ExtResource("5_ww2at")])
+levels = Array[PackedScene]([ExtResource("3_2h42e"), ExtResource("4_ww2at"), ExtResource("5_ddyp7"), ExtResource("4_ww2at"), ExtResource("5_ww2at")])
 levelButtons = [NodePath("Marker2D/01"), NodePath("Marker2D/02"), NodePath("Marker2D/03"), NodePath("Marker2D/04"), NodePath("Marker2D/05")]
 returnButton = NodePath("Return")
 

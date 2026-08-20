@@ -22,7 +22,7 @@ debug_color = Color(0, 0.5950001, 0.7, 0)
 [node name="MagneticBody" type="Node2D" parent="." unique_id=858893044]
 script = ExtResource("3_yw3sc")
 polarity = 1
-strength = 2000.0
+strength = 2300.0
 effectiveRange = 160.0
 metadata/_custom_type_script = "uid://cu5h2cdwpsbpx"
 

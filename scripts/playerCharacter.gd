@@ -16,10 +16,10 @@ const NEG_MAT := preload("res://assets/resources/negativeMat.tres")
 
 @export_group("Magnets")
 @export var magnetFalloffGradient: Gradient
-@export_range(0.0, 1.0, 0.05) var steerMagnetStrength: float
 @export var posGrad: Gradient
 @export var negGrad: Gradient
 @export var spaceMult: float
+@export var orbitStrength: float
 
 var lastForces := Vector2.ZERO
 var closestMagnet: MagneticBody
@@ -92,13 +92,17 @@ func _physics_process(delta: float) -> void:
 		
 		direction *= 1.0 if m.polarity == MagneticBody.Polarity.POSITIVE else -1.0
 		
-		var naturalForce = direction * strength * delta
-		var steeredDirection = naturalForce.normalized().slerp(
-			get_global_mouse_position().normalized(),
-			steerMagnetStrength
-		)
+		var radialDirection := direction
+		var tangentDirection := Vector2(-radialDirection.y, radialDirection.x)
+
+		if velocity.dot(tangentDirection) < 0.0:
+			tangentDirection *= -1.0
+
+		var forceDirection: Vector2 = radialDirection + tangentDirection * orbitStrength
+		forceDirection = forceDirection.normalized()
+
+		var force := forceDirection * strength * delta
 		
-		var force = steeredDirection * naturalForce.length() 
 		forces += force
 		
 		if distance < closestDistance:
@@ -111,9 +115,9 @@ func _physics_process(delta: float) -> void:
 	var spacePressed := Input.is_action_just_pressed("space")
 	
 	if spacePressed and cooldown > 0.2:
-		if charge >= 9.5:
+		if charge >= 19.5:
 			velocity += forces * spaceMult
-			charge -= 9.5 
+			charge -= 19.5 
 			cooldown = 0.0
 	elif shiftPressed and charge >= 2.5 * delta:
 		velocity += forces
