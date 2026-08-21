@@ -34,9 +34,13 @@ func _onButtonQuitGamePressed() -> void:
 	get_tree().quit()
 
 func toggle() -> void:
+	print(Global.PauseType.find_key(Global.pause))
+	
 	if open:
-		Global.pause = Global.PauseType.PAUSED
+		if Global.pause != Global.PauseType.PAUSED_FINISHED:
+			Global.pause = Global.PauseType.PAUSED
 		show()
 	else:
-		Global.pause = Global.PauseType.RUNNING
+		if Global.pause != Global.PauseType.PAUSED_FINISHED:
+			Global.pause = Global.PauseType.RUNNING
 		hide()

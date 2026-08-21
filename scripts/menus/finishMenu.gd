@@ -24,4 +24,4 @@ func _onReplayButtonPressed() -> void:
 
 func finish(nextMap) -> void:
 	show()
-	self.next = nextMap
+	next = nextMap

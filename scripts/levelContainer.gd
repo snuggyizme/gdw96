@@ -44,11 +44,11 @@ func loadMap(mapScene: PackedScene) -> void:
 	
 	if currentMap != null:
 		currentMap.queue_free()
-		currentMap.get_node("FinishRect/Finish").body_entered.disconnect(finishLevel)
+		currentMap.get_node("FinishRect/Finish").body_entered.disconnect(_finishLevel)
 	
 	currentMap = map
 	
-	currentMap.get_node("FinishRect/Finish").body_entered.connect(finishLevel)
+	currentMap.get_node("FinishRect/Finish").body_entered.connect(_finishLevel)
 
 func resetPlayer() -> void:
 	player.global_position = currentMap.get_node("PlayerSpawn").global_position
@@ -57,10 +57,10 @@ func resetPlayer() -> void:
 	currentMap.get_node("FinishRect").restart()
 	Global.pause = Global.PauseType.PAUSED_START_LVL
 
-func finishLevel(body: Node) -> void:
+func _finishLevel(body: Node) -> void:
 	if not body.is_in_group("Player"):
 		return
 	
-	Global.pause = Global.PauseType.PAUSED
+	Global.pause = Global.PauseType.PAUSED_FINISHED
 	
 	finishMenu.finish(currentMap.get_meta("nextMap"))

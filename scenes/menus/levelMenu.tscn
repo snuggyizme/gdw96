@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c0h58um40snpk" path="res://scenes/_test/mapWorkTest.tscn" id="4_ww2at"]
 [ext_resource type="PackedScene" uid="uid://dtpwqmkkqapfg" path="res://scenes/lvls/03.tscn" id="5_ddyp7"]
 [ext_resource type="PackedScene" uid="uid://bqk65ixoo1e2w" path="res://scenes/_test/testMap.tscn" id="5_ww2at"]
+[ext_resource type="PackedScene" uid="uid://bkd6ojckwlfrr" path="res://scenes/lvls/04.tscn" id="6_0e4i8"]
 
 [sub_resource type="Gradient" id="Gradient_ww2at"]
 offsets = PackedFloat32Array(0.06716418, 0.26119402, 0.64179105)
@@ -49,7 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_nr3oy")
-levels = Array[PackedScene]([ExtResource("3_2h42e"), ExtResource("4_ww2at"), ExtResource("5_ddyp7"), ExtResource("4_ww2at"), ExtResource("5_ww2at")])
+levels = Array[PackedScene]([ExtResource("3_2h42e"), ExtResource("4_ww2at"), ExtResource("5_ddyp7"), ExtResource("6_0e4i8"), ExtResource("5_ww2at")])
 levelButtons = [NodePath("Marker2D/01"), NodePath("Marker2D/02"), NodePath("Marker2D/03"), NodePath("Marker2D/04"), NodePath("Marker2D/05")]
 returnButton = NodePath("Return")
 

@@ -23,11 +23,17 @@ const NEG_MAT := preload("res://assets/resources/negativeMat.tres")
 
 var lastForces := Vector2.ZERO
 var closestMagnet: MagneticBody
+
 var charge: float:
 	set(x):
 		if is_inside_tree():
 			$ProgressBar.value = x
+		
 		charge = x
+		
+		$Warnings/Warning20.visible = ( charge < 25 )
+		$Warnings/Warning50.visible = ( charge > 25 and charge < 50 )
+
 var cooldown: float = 0.0
 
 @onready var levelContainer: LevelContainer = get_node("/root/Game/LevelContainer")
@@ -48,12 +54,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			return
 	
-	if Global.pause == Global.PauseType.PAUSED:
+	if Global.pause in [Global.PauseType.PAUSED, Global.PauseType.PAUSED_FINISHED]:
 		return
-	
-	# Warnings
-	$Warnings/Warning20.visible = ( charge < 25 )
-	$Warnings/Warning50.visible = ( charge > 25 and charge < 50 )
 	
 	# Movement
 	var dir = Input.get_vector(

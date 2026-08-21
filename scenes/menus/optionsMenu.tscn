@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://bstmwxqe5jld0"]
+
+[ext_resource type="Shader" uid="uid://cec7age3ibkum" path="res://shaders/noiseReplacer.gdshader" id="1_8jgp6"]
+[ext_resource type="Material" uid="uid://i6n7a2tc6vwa" path="res://assets/resources/redNoiseMat.tres" id="1_ct0uf"]
+[ext_resource type="Script" uid="uid://dwr65et2phhnr" path="res://scripts/menus/optionsMenu.gd" id="1_fmjcb"]
+[ext_resource type="FontFile" uid="uid://bg2i732n8qch5" path="res://assets/fonts/GajrajOne-Regular.ttf" id="2_hk6xg"]
+[ext_resource type="Script" uid="uid://bufoahx4d5uq0" path="res://scripts/menus/mainMenuTitle.gd" id="3_8jgp6"]
+
+[sub_resource type="Gradient" id="Gradient_hk6xg"]
+offsets = PackedFloat32Array(0.43283582, 0.619403, 0.82835823, 1)
+colors = PackedColorArray(0.09, 0.09, 0.09, 1, 0.21, 0.21, 0.21, 1, 0.09, 0.09, 0.09, 1, 0.61, 0.61, 0.61, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f2nhl"]
+noise_type = 5
+frequency = 0.0339
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fmjcb"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_f2nhl")
+color_ramp = SubResource("Gradient_hk6xg")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ct0uf"]
+shader = ExtResource("1_8jgp6")
+shader_parameter/colourToReplace = Color(0.6, 0.17254902, 0.17254902, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_fmjcb")
+shader_parameter/speed = -0.002
+shader_parameter/localUV = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hk6xg"]
+bg_color = Color(0.6, 0.17254902, 0.17254902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmjcb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2nhl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3hx66"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhxfd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jgp6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_by27h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.15686275)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[node name="OptionsMenu" type="Control" unique_id=1112460549]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fmjcb")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1480500505]
+material = SubResource("ShaderMaterial_ct0uf")
+layout_mode = 0
+offset_left = 11.0
+offset_top = 21.0
+offset_right = 446.0
+offset_bottom = 246.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hk6xg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=280789071]
+layout_mode = 2
+
+[node name="OptionsTitle" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1115090515]
+material = ExtResource("1_ct0uf")
+layout_mode = 2
+
+[node name="Padding" type="Control" parent="PanelContainer/VBoxContainer/OptionsTitle" unique_id=132710813]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/OptionsTitle" unique_id=1219339525]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.34117648)
+theme_override_colors/font_outline_color = Color(0.67058825, 0.16862746, 0.16862746, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 9
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_hk6xg")
+theme_override_font_sizes/font_size = 28
+text = "Options"
+
+[node name="Row1" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=116400895]
+material = ExtResource("1_ct0uf")
+layout_mode = 2
+
+[node name="Padding" type="Control" parent="PanelContainer/VBoxContainer/Row1" unique_id=1457363641]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Fullscreen" type="Button" parent="PanelContainer/VBoxContainer/Row1" unique_id=1851450560 node_paths=PackedStringArray("area")]
+use_parent_material = true
+custom_maximum_size = Vector2(180, -1)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_hk6xg")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_fmjcb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f2nhl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3hx66")
+text = "Toggle Fullscreen"
+script = ExtResource("3_8jgp6")
+area = NodePath(".")
+
+[node name="Row2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1707990465]
+layout_mode = 2
+
+[node name="Padding" type="Control" parent="PanelContainer/VBoxContainer/Row2" unique_id=1370964192]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Row2" unique_id=946025153]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hk6xg")
+theme_override_font_sizes/font_size = 9
+text = "Volume ->"
+
+[node name="VolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/Row2" unique_id=175888765]
+unique_name_in_owner = true
+material = ExtResource("1_ct0uf")
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_styles/slider = SubResource("StyleBoxFlat_lhxfd")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_8jgp6")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_by27h")
+value = 85.0
+tick_count = 10
+ticks_on_borders = true
+ticks_position = 3
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Row1/Fullscreen" to="." method="_onFullscreenButtonPressed"]
+[connection signal="drag_ended" from="PanelContainer/VBoxContainer/Row2/VolumeSlider" to="." method="_onVolumeSliderDragReleased"]
