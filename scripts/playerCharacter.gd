@@ -36,7 +36,19 @@ func _ready() -> void:
 	bounceWarnings()
 
 func _physics_process(delta: float) -> void:
-	if Global.pause:
+	if Global.pause == Global.PauseType.PAUSED_START_LVL:
+		if (
+			Input.is_action_pressed("a")
+			or Input.is_action_pressed("w")
+			or Input.is_action_pressed("d")
+			or Input.is_action_pressed("shift")
+			or Input.is_action_pressed("space")
+		):
+			Global.pause = Global.PauseType.RUNNING
+		else:
+			return
+	
+	if Global.pause == Global.PauseType.PAUSED:
 		return
 	
 	# Warnings

@@ -1,10 +1,12 @@
 [gd_scene format=4 uid="uid://c0h58um40snpk"]
 
+[ext_resource type="PackedScene" uid="uid://dtpwqmkkqapfg" path="res://scenes/lvls/03.tscn" id="1_ndsbd"]
 [ext_resource type="TileSet" uid="uid://hudfkn0lk5sr" path="res://assets/resources/tileset.tres" id="1_ocl63"]
 [ext_resource type="PackedScene" uid="uid://byh8yxmi7help" path="res://scenes/magnets/posMagBall64.tscn" id="2_20xtl"]
 [ext_resource type="PackedScene" uid="uid://doby2p1ybbs8f" path="res://scenes/finishRect.tscn" id="3_n4l5h"]
 
 [node name="MapWorkTest" type="Node2D" unique_id=1214422484]
+metadata/nextMap = ExtResource("1_ndsbd")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1667787236]
 position = Vector2(72, 187)

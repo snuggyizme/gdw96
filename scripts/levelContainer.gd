@@ -1,5 +1,9 @@
 class_name LevelContainer extends Node2D
 
+@export var finishMenu: FinishMenu
+@export var ui: UI
+@export var player: PlayerCharacter
+
 var currentMap: Node2D
 
 var testMap = load("res://scenes/_test/testMap.tscn")
@@ -18,6 +22,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart"):
 		resetPlayer()
 
+func _onFinishMenuRestartButtonPressed() -> void:
+	resetPlayer()
+
 func getMagnets() -> Array:
 	if not is_instance_valid(currentMap):
 		return [null]
@@ -30,6 +37,8 @@ func getMagnets() -> Array:
 	return export
 	
 func loadMap(mapScene: PackedScene) -> void:
+	Global.pause = Global.PauseType.PAUSED_START_LVL
+	
 	var map = mapScene.instantiate()
 	add_child(map)
 	
@@ -42,15 +51,16 @@ func loadMap(mapScene: PackedScene) -> void:
 	currentMap.get_node("FinishRect/Finish").body_entered.connect(finishLevel)
 
 func resetPlayer() -> void:
-	$"../PlayerCharacter".global_position = currentMap.get_node("PlayerSpawn").global_position
-	$"../PlayerCharacter".restart()
-	$"../UI".restart()
+	player.global_position = currentMap.get_node("PlayerSpawn").global_position
+	player.restart()
+	ui.restart()
 	currentMap.get_node("FinishRect").restart()
-	Global.pause = false
+	Global.pause = Global.PauseType.PAUSED_START_LVL
 
 func finishLevel(body: Node) -> void:
 	if not body.is_in_group("Player"):
 		return
 	
-	Global.pause = true
-	printt("finished!", $"../UI".time)
+	Global.pause = Global.PauseType.PAUSED
+	
+	finishMenu.finish(currentMap.get_meta("nextMap"))

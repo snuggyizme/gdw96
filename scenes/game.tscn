@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://djo0xw5bmu6mb" path="res://scripts/ui.gd" id="4_iywne"]
 [ext_resource type="FontFile" uid="uid://bg2i732n8qch5" path="res://assets/fonts/GajrajOne-Regular.ttf" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cn6vefmgwm0la" path="res://scenes/menus/pauseMenu.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://d0ro4nub6vcb" path="res://scenes/menus/finishMenu.tscn" id="6_p57ef"]
 
 [sub_resource type="FontVariation" id="FontVariation_lnu2h"]
 base_font = ExtResource("4_lbhrr")
@@ -12,9 +13,12 @@ spacing_glyph = 2
 
 [node name="Game" type="Node2D" unique_id=369631321]
 
-[node name="LevelContainer" type="Node2D" parent="." unique_id=1305887076]
+[node name="LevelContainer" type="Node2D" parent="." unique_id=1305887076 node_paths=PackedStringArray("finishMenu", "ui", "player")]
 unique_name_in_owner = true
 script = ExtResource("1_uwrxv")
+finishMenu = NodePath("../UI/FinishMenu")
+ui = NodePath("../UI")
+player = NodePath("../PlayerCharacter")
 
 [node name="PlayerCharacter" parent="." unique_id=797122572 instance=ExtResource("2_yqjtg")]
 position = Vector2(202, 55)
@@ -31,3 +35,7 @@ text = "00:00:00"
 horizontal_alignment = 1
 
 [node name="PauseMenu" parent="UI" unique_id=1650794542 instance=ExtResource("5_iywne")]
+
+[node name="FinishMenu" parent="UI" unique_id=562785359 instance=ExtResource("6_p57ef")]
+
+[connection signal="restart" from="UI/FinishMenu" to="LevelContainer" method="_onFinishMenuRestartButtonPressed"]

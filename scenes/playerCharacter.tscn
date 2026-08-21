@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://btlv5g3f7obua" path="res://scripts/playerCharacter.gd" id="1_qn7b7"]
 [ext_resource type="Texture2D" uid="uid://bh7ah1a015kgh" path="res://assets/sprites/player/arrow.png" id="2_gujqm"]
 [ext_resource type="Shader" uid="uid://cec7age3ibkum" path="res://shaders/noiseReplacer.gdshader" id="5_5vujh"]
+[ext_resource type="Script" uid="uid://g7h5nanhrdb3" path="res://scripts/trail.gd" id="6_5auh5"]
 [ext_resource type="Texture2D" uid="uid://ketgvcag07au" path="res://assets/sprites/player/warning50.png" id="6_nspu6"]
 [ext_resource type="Texture2D" uid="uid://c7qukk4fv4x40" path="res://assets/sprites/player/warning20.png" id="7_5auh5"]
 
@@ -68,7 +69,6 @@ magnetFalloffGradient = SubResource("Gradient_5vujh")
 posGrad = SubResource("Gradient_r7e07")
 negGrad = SubResource("Gradient_7pjku")
 spaceMult = 12.0
-orbitStrength = 0.485
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2058709976]
 texture = ExtResource("2_gujqm")
@@ -102,3 +102,9 @@ texture = ExtResource("6_nspu6")
 [node name="Warning20" type="Sprite2D" parent="Warnings" unique_id=1009182636]
 z_index = 2
 texture = ExtResource("7_5auh5")
+
+[node name="Trail" type="Line2D" parent="." unique_id=2092356185]
+default_color = Color(0.7792914, 0.7792914, 0.7792913, 1)
+script = ExtResource("6_5auh5")
+driftSpeed = 0.2
+metadata/_custom_type_script = "uid://g7h5nanhrdb3"

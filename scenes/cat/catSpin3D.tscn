@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://yy4p12wk708p"]
+
+[ext_resource type="Texture2D" uid="uid://y5ici70gyqcq" path="res://assets/sprites/catLowRes.png" id="1_io27f"]
+[ext_resource type="Script" uid="uid://chuvwgl50kxe3" path="res://scripts/catSpinner.gd" id="2_d6ftk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_io27f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qs1u8"]
+albedo_texture = ExtResource("1_io27f")
+
+[node name="CatSpin3D" type="Node3D" unique_id=1924987354]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2003057540]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=222854322]
+transform = Transform3D(1, 0, 0, 0, -0.061610084, -0.9981003, 0, 0.9981003, -0.061610084, 0, 0, -2.1748703)
+mesh = SubResource("PlaneMesh_io27f")
+surface_material_override/0 = SubResource("StandardMaterial3D_qs1u8")
+script = ExtResource("2_d6ftk")
+speed = 30.0
